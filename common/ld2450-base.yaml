@@ -150,11 +150,11 @@ button:
       - switch.turn_on: mmwave_configuration
       - delay: 1s
       - uart.write:
-          id: uart_bus
+          id: uart_ld2450
           data: [0xFD, 0xFC, 0xFB, 0xFA, 0x02, 0x00, 0xA0, 0x00, 0x04, 0x03, 0x02, 0x01]
       - lambda: |-
           uint8_t response[20];
-          if (id(uart_bus).read_array(response, 20)) {
+          if (id(uart_ld2450).read_array(response, 20)) {
             int firmware_major = response[13];
             int firmware_minor = response[12];
             char firmware_version_str[32];
@@ -175,7 +175,7 @@ button:
       - switch.turn_on: mmwave_configuration
       - delay: 1s  
       - uart.write:
-          id: uart_bus
+          id: uart_ld2450
           data: [0xFD, 0xFC, 0xFB, 0xFA, 0x02, 0x00, 0xA3, 0x00, 0x04, 0x03, 0x02, 0x01]
   - platform: template
     name: "Factory Reset mmWave Sensor"
@@ -188,7 +188,7 @@ button:
       - switch.turn_on: mmwave_configuration
       - delay: 2s
       - uart.write:
-          id: uart_bus
+          id: uart_ld2450
           data: [0xFD, 0xFC, 0xFB, 0xFA, 0x02, 0x00, 0xA2, 0x00, 0x04, 0x03, 0x02, 0x01]
       - delay: 2s
       - switch.turn_off: mmwave_configuration
@@ -206,11 +206,11 @@ switch:
     restore_mode: DISABLED
     turn_on_action:
       - uart.write:
-          id: uart_bus
+          id: uart_ld2450
           data: [0xFD, 0xFC, 0xFB, 0xFA, 0x04, 0x00, 0xFF, 0x00, 0x01, 0x00, 0x04, 0x03, 0x02, 0x01]
     turn_off_action:
       - uart.write:
-          id: uart_bus
+          id: uart_ld2450
           data: [0xFD, 0xFC, 0xFB, 0xFA, 0x02, 0x00, 0xFE, 0x00, 0x04, 0x03, 0x02, 0x01]
 
   - platform: template
@@ -223,7 +223,7 @@ switch:
       - switch.turn_on: mmwave_configuration
       - delay: 2s
       - uart.write:
-          id: uart_bus
+          id: uart_ld2450
           data: [0xFD, 0xFC, 0xFB, 0xFA, 0x04, 0x00, 0xA4, 0x00, 0x01, 0x00, 0x04, 0x03, 0x02, 0x01]  # Turn on Bluetooth
       - delay: 2s
       - button.press: reboot_mmwave_sensor  # Reboot after enabling Bluetooth
@@ -234,7 +234,7 @@ switch:
       - switch.turn_on: mmwave_configuration
       - delay: 2s
       - uart.write:
-          id: uart_bus
+          id: uart_ld2450
           data: [0xFD, 0xFC, 0xFB, 0xFA, 0x04, 0x00, 0xA4, 0x00, 0x00, 0x00, 0x04, 0x03, 0x02, 0x01]  # Turn off Bluetooth
       - delay: 2s
       - button.press: reboot_mmwave_sensor  # Reboot after enabling Bluetooth
@@ -992,14 +992,14 @@ text:
             id(poly_entry_2_points) = points;
 
 uart:
-  id: uart_bus
+  id: uart_ld2450
   tx_pin: 
-    number: GPIO17
+    number: GPIO19
     mode:
       input: true
       pullup: true
   rx_pin: 
-    number: GPIO16
+    number: GPIO18
     mode:
       input: true
       pullup: true
