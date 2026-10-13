@@ -1607,7 +1607,7 @@ uart:
           } else {
             id(assumed_present_remaining_s).publish_state(0);
           }
-          if (had_hold && !hold_active && !any_detected_now) {
+          if (had_hold && !hold_active && !) {
             id(entry_exit_last_decision).publish_state("Hold Expired");
             id(entry_exit_last_zone).publish_state("None");
           }
