@@ -1,6 +1,6 @@
 substitutions:
-  name: "everything-presence-pro"
-  friendly_name: "Everything Presence Pro"
+  name: "everything-presence-lite"
+  friendly_name: "Everything Presence Lite"
   temperature_offset: "-3"
   humidity_offset: "5"
   temperature_update_interval: "60s"
@@ -19,7 +19,7 @@ substitutions:
     board_revision: "1.5"
     sensor_variant: "ld2450"
     firmware_channel: "stable"
-    model: "everything-presence-pro"
+    model: "everything-presence-lite"
 
 update:
   - platform: http_request
