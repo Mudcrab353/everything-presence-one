@@ -1589,7 +1589,7 @@ uart:
             }
           }
 
-          bool occ_now = any_detected_now;
+          bool occ_now = ;
           if (!occ_now && id(entry_exit_enabled).state) {
             if (assumed_present_until != 0 && millis() < assumed_present_until) {
               occ_now = true;
