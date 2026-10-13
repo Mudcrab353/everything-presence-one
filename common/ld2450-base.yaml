@@ -1595,7 +1595,7 @@ uart:
               occ_now = true;
             }
           }
-          id(occupancy).publish_state(occ_now);
+          id(ld2450_occupancy).publish_state(occ_now);
           bool hold_active = (assumed_present_until != 0 && millis() < assumed_present_until);
           id(assumed_present_active) = hold_active;
           id(assumed_present_until_ms) = assumed_present_until;
