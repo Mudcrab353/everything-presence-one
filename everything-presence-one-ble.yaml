@@ -1,6 +1,6 @@
 substitutions:
-  name: "everything-presence-one"
-  friendly_name: "Everything Presence One"
+  name: "everything-presence-pro"
+  friendly_name: "Everything Presence Pro"
   temperature_offset: "-3"
   humidity_offset: "5"
   temperature_update_interval: "60s"
@@ -19,7 +19,7 @@ substitutions:
     board_revision: "1.5"
     sensor_variant: "sen0395"
     firmware_channel: "stable"
-    model: "everything-presence-one"
+    model: "everything-presence-pro"
 
 update:
   - platform: http_request
