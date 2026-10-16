@@ -182,7 +182,7 @@ binary_sensor:
       - delayed_on: !lambda 'return id(pir_on_latency).state * 1000.0;'
       - delayed_off:  !lambda 'return id(pir_off_latency).state * 1000.0;'
   - platform: template
-    name: Occupancy
+    name: Presence
     id: occupancy
     device_class: occupancy
     filters:
